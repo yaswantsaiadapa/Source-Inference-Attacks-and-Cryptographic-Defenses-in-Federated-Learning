@@ -1,0 +1,19 @@
+phase,defense,alpha,local_ep,seed,dp_noise,test_acc,attack_acc,random_guess_acc
+Phase 2: Baseline,none,0.1,1,1,0.0,73.08,48.1,10.0
+Phase 2: Baseline,none,0.1,1,2,0.0,66.75,57.83,10.0
+Phase 2: Baseline,none,1.0,1,1,0.0,95.24,20.3,10.0
+Phase 2: Baseline,none,1.0,1,2,0.0,96.09,19.4,10.0
+Phase 2: Baseline,none,10.0,1,1,0.0,95.64,14.1,10.0
+Phase 2: Baseline,none,10.0,1,2,0.0,95.98,12.8,10.0
+Phase 3: DP Defense,dp,0.1,1,1,0.001,70.8,43.5,10.0
+Phase 3: DP Defense,dp,0.1,1,2,0.001,69.02,58.26,10.0
+Phase 3: DP Defense,dp,0.1,1,1,0.01,70.83,43.1,10.0
+Phase 3: DP Defense,dp,0.1,1,2,0.01,67.92,57.39,10.0
+Phase 3: DP Defense,dp,0.1,1,1,0.05,67.62,45.9,10.0
+Phase 3: DP Defense,dp,0.1,1,2,0.05,65.48,55.65,10.0
+Phase 3: DP Defense,dp,0.1,1,1,0.1,39.55,44.0,10.0
+Phase 3: DP Defense,dp,0.1,1,2,0.1,27.13,43.04,10.0
+Phase 4: SecAgg Defense,secagg,0.1,1,1,0.0,61.47,8.5,10.0
+Phase 4: SecAgg Defense,secagg,0.1,1,2,0.0,68.75,4.78,10.0
+Phase 4: DP + SecAgg,dp_secagg,0.1,1,1,0.01,60.69,8.5,10.0
+Phase 4: DP + SecAgg,dp_secagg,0.1,1,2,0.01,68.98,4.78,10.0

@@ -68,13 +68,12 @@ class SIA(object):
 
                 y_losse = []
 
-                idx_tensor = torch.tensor(idx)
+                device = getattr(self.args, 'device', torch.device('cuda:{}'.format(self.args.gpu) if torch.cuda.is_available() and self.args.gpu != -1 else 'cpu'))
+                idx_tensor = torch.tensor(idx).to(device)
                 net.load_state_dict(self.w_locals[local])
                 net.eval()
                 for id, (data, target) in enumerate(dataset_local):
-                    if self.args.gpu != -1:
-                        data, target = data.cuda(), target.cuda()
-                        idx_tensor = idx_tensor.cuda()
+                    data, target = data.to(device), target.to(device)
                     log_prob = net(data)
                     # prediction loss based attack: get the prediction loss of the test sample
                     loss = nn.CrossEntropyLoss(reduction='none')
@@ -86,7 +85,8 @@ class SIA(object):
                 y_losse = np.concatenate(y_losse).reshape(-1)
                 y_loss_all.append(y_losse)
 
-            y_loss_all = torch.tensor(y_loss_all).to(self.args.gpu)
+            device = getattr(self.args, 'device', torch.device('cuda:{}'.format(self.args.gpu) if torch.cuda.is_available() and self.args.gpu != -1 else 'cpu'))
+            y_loss_all = torch.tensor(np.array(y_loss_all)).to(device)
 
             # test if the owner party has the largest prediction probability
             # get the parties' index of the largest probability of each sample
